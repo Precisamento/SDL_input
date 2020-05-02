@@ -1,0 +1,1 @@
+option('sdl_dir', type: 'string', description: 'The location of SDL2.', value: '')
