@@ -134,6 +134,30 @@ int main(void) {
 }
 ```
 
+## Including
+
+This library is pretty small, so you can easily clone it directly into your projects, but it uses meson to make the process even easier.
+
+In your `subprojects` folder add the following wrap file:
+
+```
+[wrap-git]
+
+directory = SDL_input
+url = https://github.com/Precisamento/SDL_input.git
+revision = master
+clone-recursive = true
+```
+
+Then you can reference the project in your meson file like so:
+
+```meson
+SDL_input = subproject('SDL_input')
+SDL_input_dep = SDL_input.get_variable('sdl_input_dep')
+```
+
+then you can use `sdl_input_dep` just like any other dependency.
+
 ## Building
 
 This library uses meson to build. On windows, you need to specify the location of SDL, but there are no other options, just buld like normal. On linux, it assumes that SDL is installed on your system, but the location can be manually specified if it's not.
